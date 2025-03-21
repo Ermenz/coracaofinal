@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0b1522;
+}
+
+.heart {
+    height: 150px;  /* Aumentando o tamanho do coração */
+    width: 150px;   /* Aumentando o tamanho do coração */
+    background: #f20044;
+    position: relative;
+    transform: rotate(-45deg);
+    box-shadow: -10px 10px 90px #f20044;
+    animation: heart 1.5s linear infinite; /* Aumento de tempo para desacelerar as batidas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes heart {
+    0% {
+        transform: rotate(-45deg) scale(0.07);
+    }
+    80% {
+        transform: rotate(-45deg) scale(1);
+    }
+    100% {
+        transform: rotate(-45deg) scale(0.8);
+    }
+}
+
+.heart::before {
+    content: '';
+    position: absolute;
+    height: 150px;  /* Aumentando para combinar com o tamanho principal */
+    width: 150px;   /* Aumentando para combinar com o tamanho principal */
+    background: #f20044;
+    top: -50%;
+    left: 0;
+    border-radius: 50%;  /* Tornando o coração mais arredondado */
+    box-shadow: -10px -10px 90px #f20044;
+}
+
+.heart::after {
+    content: '';
+    position: absolute;
+    height: 150px;  /* Aumentando para combinar com o tamanho principal */
+    width: 150px;   /* Aumentando para combinar com o tamanho principal */
+    background: #f20044;
+    left: 50%;
+    top: 0;
+    border-radius: 50%;  /* Tornando o coração mais arredondado */
+    box-shadow: -10px 10px 90px #f20044;
+}
+
+/* Ajuste do texto */
+.heart span {
+    position: absolute;
+    font-size: 24px;  /* Aumentando o tamanho da fonte */
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    z-index: 1;
+    transform: rotate(45deg); /* Texto na horizontal */
+    margin-top: -35px;
+    margin-left: 40px;
+}
+
+/* Adaptação para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    .heart {
+        height: 120px;  /* Reduzindo o tamanho do coração em telas menores */
+        width: 120px;   /* Reduzindo o tamanho do coração em telas menores */
+    }
+
+    .heart::before, .heart::after {
+        height: 120px;  /* Ajustando os pseudo-elementos */
+        width: 120px;   /* Ajustando os pseudo-elementos */
+    }
+
+    .heart span {
+        font-size: 18px;  /* Diminuindo o tamanho da fonte */
+    }
+}
+
+/* Adaptação para telas muito pequenas (celulares) */
+@media screen and (max-width: 480px) {
+    .heart {
+        height: 100px;  /* Ainda menor para telas pequenas */
+        width: 100px;   /* Ajuste do coração */
+    }
+
+    .heart::before, .heart::after {
+        height: 100px;  /* Ajustando os pseudo-elementos */
+        width: 100px;   /* Ajustando os pseudo-elementos */
+    }
+
+    .heart span {
+        font-size: 14px;  /* Diminuindo mais o tamanho da fonte */
+    }
+}
